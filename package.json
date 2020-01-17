@@ -1,0 +1,59 @@
+{
+  "_from": "angular-cordova",
+  "_id": "angular-cordova@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-WN/gx+GynkVJmAuNA0rYBU0BBOE=",
+  "_location": "/angular-cordova",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "angular-cordova",
+    "name": "angular-cordova",
+    "escapedName": "angular-cordova",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/angular-cordova/-/angular-cordova-1.0.0.tgz",
+  "_shasum": "58dfe0c7e1b29e4549980b8d034ad8054d0104e1",
+  "_spec": "angular-cordova",
+  "_where": "/Users/gabriel/PhpstormProjects/gesproweb",
+  "author": {
+    "name": "Robert Arnesson"
+  },
+  "bugs": {
+    "url": "https://github.com/arnesson/angular-cordova/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Angular wrapper for Cordova",
+  "devDependencies": {
+    "@angular/core": "^7.2.4",
+    "rxjs": "~6.4.0",
+    "typescript": "~3.2.4",
+    "zone.js": "~0.8.26"
+  },
+  "homepage": "https://github.com/arnesson/angular-cordova#readme",
+  "keywords": [
+    "angular",
+    "angularjs",
+    "cordova",
+    "ngCordova"
+  ],
+  "license": "MIT",
+  "name": "angular-cordova",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arnesson/angular-cordova.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "tsc"
+  },
+  "version": "1.0.0"
+}
