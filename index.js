@@ -1,47 +1,21 @@
 "use strict";
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
 Object.defineProperty(exports, "__esModule", { value: true });
-var rxjs_1 = require("rxjs");
-require("rxjs/add/operator/share");
-var Cordova;
-(function (Cordova) {
-    Cordova.platformId = window.cordova.platformId;
-    Cordova.deviceready = rxjs_1.Observable.create(function (observer) {
-        var fn = function () {
-            observer.next(null);
-            observer.complete();
-        };
-        document.addEventListener('deviceready', fn, false);
-        return function () {
-            document.removeEventListener('deviceready', fn, false);
-        };
-    }).share();
-    Cordova.deviceready.subscribe();
-})(Cordova = exports.Cordova || (exports.Cordova = {}));
-var ZoneObservable;
-(function (ZoneObservable) {
-    function create(zone, fn) {
-        return rxjs_1.Observable.create(function (observer) {
-            fn({
-                next: function (emit) {
-                    zone.run(function () {
-                        observer.next(emit);
-                    });
-                },
-                error: function (error) {
-                    zone.run(function () { return observer.error(error); });
-                },
-                complete: function () {
-                    zone.run(function () { return observer.complete(); });
-                }
-            });
-        });
-    }
-    ZoneObservable.create = create;
-    function of(zone, emit) {
-        return rxjs_1.Observable.create(function (observer) {
-            zone.run(function () { return observer.next(emit); });
-            zone.run(function () { return observer.complete(); });
-        });
-    }
-    ZoneObservable.of = of;
-})(ZoneObservable = exports.ZoneObservable || (exports.ZoneObservable = {}));
+__export(require("./plugin/battery-status"));
+__export(require("./plugin/camera"));
+__export(require("./plugin/device"));
+__export(require("./plugin/device-motion"));
+__export(require("./plugin/device-orientation"));
+__export(require("./plugin/dialogs"));
+__export(require("./plugin/facebook"));
+__export(require("./plugin/firebase"));
+__export(require("./plugin/geolocation"));
+__export(require("./plugin/keyboard"));
+__export(require("./plugin/media"));
+__export(require("./plugin/network-information"));
+__export(require("./plugin/splashscreen"));
+__export(require("./plugin/statusbar"));
+__export(require("./plugin/stripe"));
+__export(require("./plugin/vibration"));

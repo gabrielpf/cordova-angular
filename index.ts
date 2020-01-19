@@ -1,46 +1,17 @@
-import { NgZone } from '@angular/core';
-
-import { Observable} from "rxjs";
-import 'rxjs/add/operator/share';
-
-export namespace Cordova {
-    export const platformId: string = (<any>window).cordova.platformId;
-    export const deviceready: Observable<any> = Observable.create((observer: any) => {
-        let fn = () => {
-            observer.next(null);
-            observer.complete();
-        }
-        (<any>document).addEventListener('deviceready', fn, false);
-        return () => {
-            (<any>document).removeEventListener('deviceready', fn, false);
-        };
-    }).share();
-
-    deviceready.subscribe();
-}
-
-export namespace ZoneObservable {
-    export function create(zone: NgZone, fn: (observer: any) => any): Observable<any> {
-        return Observable.create((observer: any) => {
-            fn({
-                next: (emit: any) => {
-                    zone.run(() => {
-                        observer.next(emit)
-                    });
-                },
-                error: (error: any) => {
-                    zone.run(() => observer.error(error));
-                },
-                complete: () => {
-                    zone.run(() => observer.complete());
-                }
-            });
-        });
-    }
-    export function of(zone: NgZone, emit: any): Observable<any> {
-        return Observable.create((observer: any) => {
-            zone.run(() => observer.next(emit));
-            zone.run(() => observer.complete());
-        });
-    }
-}
+export * from './plugin/battery-status';
+export * from './plugin/camera';
+export * from './plugin/device';
+export * from './plugin/device-motion';
+export * from './plugin/device-orientation';
+export * from './plugin/dialogs';
+export * from './plugin/facebook';
+export * from './plugin/firebase';
+export * from './plugin/geolocation';
+export * from './plugin/keyboard';
+export * from './plugin/media';
+export * from './plugin/network-information';
+export * from './plugin/splashscreen';
+export * from './plugin/statusbar';
+export * from './plugin/stripe';
+export * from './plugin/vibration';
+export * from './plugin/vibration';
