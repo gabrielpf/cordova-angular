@@ -11,15 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 // cordova-plugin-vibration
 var core_1 = require("@angular/core");
-require("rxjs/add/operator/mergeMap");
-var _1 = require("../");
-var VibrationService = (function () {
+var operators_1 = require("rxjs/operators");
+var __1 = require("../");
+var VibrationService = /** @class */ (function () {
     function VibrationService(zone) {
         this.zone = zone;
     }
     VibrationService.prototype.vibrate = function (time_or_pattern) {
         var _this = this;
-        return _1.Cordova.deviceready.mergeMap(function () { return _1.ZoneObservable.of(_this.zone, window.navigator.vibrate(time_or_pattern)); });
+        return __1.Cordova.deviceready.pipe(operators_1.mergeMap(function () { return __1.ZoneObservable.of(_this.zone, window.navigator.vibrate(time_or_pattern)); }));
     };
     VibrationService = __decorate([
         core_1.Injectable(),

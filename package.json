@@ -1,6 +1,5 @@
 {
   "_from": "angular-cordova",
-  "_id": "angular-cordova@1.0.0",
   "_inBundle": false,
   "_integrity": "sha1-WN/gx+GynkVJmAuNA0rYBU0BBOE=",
   "_location": "/angular-cordova",
@@ -19,15 +18,8 @@
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/angular-cordova/-/angular-cordova-1.0.0.tgz",
-  "_shasum": "58dfe0c7e1b29e4549980b8d034ad8054d0104e1",
-  "_spec": "angular-cordova",
-  "_where": "/Users/gabriel/PhpstormProjects/gesproweb",
-  "author": {
-    "name": "Robert Arnesson"
-  },
   "bugs": {
-    "url": "https://github.com/arnesson/angular-cordova/issues"
+    "url": "https://github.com/gabrielpf/cordova-angular/issues"
   },
   "bundleDependencies": false,
   "deprecated": false,
@@ -38,7 +30,7 @@
     "typescript": "~3.2.4",
     "zone.js": "~0.8.26"
   },
-  "homepage": "https://github.com/arnesson/angular-cordova#readme",
+  "homepage": "https://github.com/gabrielpf/cordova-angular#readme",
   "keywords": [
     "angular",
     "angularjs",
@@ -46,14 +38,16 @@
     "ngCordova"
   ],
   "license": "MIT",
-  "name": "angular-cordova",
+  "name": "cordova-angular",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arnesson/angular-cordova.git"
+    "url": "git+https://github.com/gabrielpf/cordova-angular.git"
   },
   "scripts": {
     "build": "tsc",
     "test": "tsc"
   },
-  "version": "1.0.0"
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "gabrielpf"
 }

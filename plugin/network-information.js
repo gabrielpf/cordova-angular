@@ -11,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 //cordova-plugin-network-information
 var core_1 = require("@angular/core");
-require("rxjs/add/operator/mergeMap");
-var _1 = require("../");
+var operators_1 = require("rxjs/operators");
+var __1 = require("../");
 var Connection;
 (function (Connection) {
     Connection["UNKNOWN"] = "unknown";
@@ -24,37 +24,37 @@ var Connection;
     Connection["NONE"] = "none";
     Connection["CELL"] = "celluar";
 })(Connection = exports.Connection || (exports.Connection = {}));
-var NetworkInformationService = (function () {
+var NetworkInformationService = /** @class */ (function () {
     function NetworkInformationService(zone) {
         this.zone = zone;
     }
     NetworkInformationService.prototype.online = function () {
         var _this = this;
-        return _1.Cordova.deviceready.mergeMap(function () {
-            return _1.ZoneObservable.create(_this.zone, function (observer) {
+        return __1.Cordova.deviceready.pipe(operators_1.mergeMap(function () {
+            return __1.ZoneObservable.create(_this.zone, function (observer) {
                 document.addEventListener('online', observer.next, false);
                 return function () {
                     document.removeEventListener('online', observer.next, false);
                 };
             });
-        });
+        }));
     };
     NetworkInformationService.prototype.offline = function () {
         var _this = this;
-        return _1.Cordova.deviceready.mergeMap(function () {
-            return _1.ZoneObservable.create(_this.zone, function (observer) {
+        return __1.Cordova.deviceready.pipe(operators_1.mergeMap(function () {
+            return __1.ZoneObservable.create(_this.zone, function (observer) {
                 document.addEventListener('offline', observer.next, false);
                 return function () {
                     document.removeEventListener('offline', observer.next, false);
                 };
             });
-        });
+        }));
     };
     NetworkInformationService.prototype.connectionType = function () {
         var _this = this;
-        return _1.Cordova.deviceready.mergeMap(function () {
-            return _1.ZoneObservable.of(_this.zone, window.navigator.connection.type);
-        });
+        return __1.Cordova.deviceready.pipe(operators_1.mergeMap(function () {
+            return __1.ZoneObservable.of(_this.zone, window.navigator.connection.type);
+        }));
     };
     NetworkInformationService = __decorate([
         core_1.Injectable(),

@@ -11,36 +11,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 // cordova-plugin-device-orientation
 var core_1 = require("@angular/core");
-require("rxjs/add/operator/mergeMap");
-var _1 = require("../");
+var operators_1 = require("rxjs/operators");
+var __1 = require("../");
 var CompassError;
 (function (CompassError) {
     CompassError[CompassError["COMPASS_INTERNAL_ERR"] = 0] = "COMPASS_INTERNAL_ERR";
     CompassError[CompassError["COMPASS_NOT_SUPPORTED"] = 20] = "COMPASS_NOT_SUPPORTED";
 })(CompassError = exports.CompassError || (exports.CompassError = {}));
-var DeviceOrientationService = (function () {
+var DeviceOrientationService = /** @class */ (function () {
     function DeviceOrientationService(zone) {
         this.zone = zone;
     }
     DeviceOrientationService.prototype.getCurrentHeading = function () {
         var _this = this;
-        return _1.Cordova.deviceready.mergeMap(function () { return _1.ZoneObservable.create(_this.zone, function (observer) {
+        return __1.Cordova.deviceready.pipe(operators_1.mergeMap(function () { return __1.ZoneObservable.create(_this.zone, function (observer) {
             window.navigator.compass.getCurrentHeading(function (res) {
                 observer.next(res);
                 observer.complete();
             }, observer.error);
-        }); });
+        }); }));
     };
     DeviceOrientationService.prototype.watchHeading = function (options) {
         var _this = this;
-        return _1.Cordova.deviceready.mergeMap(function () { return _1.ZoneObservable.create(_this.zone, function (observer) {
+        return __1.Cordova.deviceready.pipe(operators_1.mergeMap(function () { return __1.ZoneObservable.create(_this.zone, function (observer) {
             var watchID = window.navigator.compass.watchHeading(function (res) {
                 observer.next(res);
             }, observer.error, options);
             return function () {
                 window.navigator.compass.clearWatch(watchID);
             };
-        }); });
+        }); }));
     };
     DeviceOrientationService = __decorate([
         core_1.Injectable(),

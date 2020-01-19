@@ -11,20 +11,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 // cordova-plugin-stripe
 var core_1 = require("@angular/core");
-require("rxjs/add/operator/mergeMap");
-var _1 = require("../");
-var StripeService = (function () {
+var operators_1 = require("rxjs/operators");
+var __1 = require("../");
+var StripeService = /** @class */ (function () {
     function StripeService(zone) {
         this.zone = zone;
     }
     StripeService.prototype.createCardToken = function (creditCard) {
         var _this = this;
-        return _1.Cordova.deviceready.mergeMap(function () { return _1.ZoneObservable.create(_this.zone, function (observer) {
+        return __1.Cordova.deviceready.pipe(operators_1.mergeMap(function () { return __1.ZoneObservable.create(_this.zone, function (observer) {
             window.cordova.plugins.stripe.createCardToken(creditCard, function (res) {
                 observer.next(res);
                 observer.complete();
             }, observer.error);
-        }); });
+        }); }));
     };
     StripeService = __decorate([
         core_1.Injectable(),

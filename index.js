@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Observable_1 = require("rxjs/Observable");
+var rxjs_1 = require("rxjs");
 require("rxjs/add/operator/share");
 var Cordova;
 (function (Cordova) {
     Cordova.platformId = window.cordova.platformId;
-    Cordova.deviceready = Observable_1.Observable.create(function (observer) {
+    Cordova.deviceready = rxjs_1.Observable.create(function (observer) {
         var fn = function () {
             observer.next(null);
             observer.complete();
@@ -20,7 +20,7 @@ var Cordova;
 var ZoneObservable;
 (function (ZoneObservable) {
     function create(zone, fn) {
-        return Observable_1.Observable.create(function (observer) {
+        return rxjs_1.Observable.create(function (observer) {
             fn({
                 next: function (emit) {
                     zone.run(function () {
@@ -38,7 +38,7 @@ var ZoneObservable;
     }
     ZoneObservable.create = create;
     function of(zone, emit) {
-        return Observable_1.Observable.create(function (observer) {
+        return rxjs_1.Observable.create(function (observer) {
             zone.run(function () { return observer.next(emit); });
             zone.run(function () { return observer.complete(); });
         });
