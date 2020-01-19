@@ -25,10 +25,14 @@
   "deprecated": false,
   "description": "Angular wrapper for Cordova",
   "devDependencies": {
-    "@angular/core": "^7.2.4",
-    "rxjs": "~6.4.0",
-    "typescript": "~3.2.4",
-    "zone.js": "~0.8.26"
+    "@angular/compiler": "^8.2.14",
+    "@angular/compiler-cli": "^8.2.14",
+    "@angular/core": "^8.2.14",
+    "rollup": "^1.29.0",
+    "rxjs": "^6.5.4",
+    "typescript": "^3.5.3",
+    "uglify-js": "^3.7.5",
+    "zone.js": "^0.10.2"
   },
   "homepage": "https://github.com/gabrielpf/cordova-angular#readme",
   "keywords": [
@@ -44,10 +48,12 @@
     "url": "git+https://github.com/gabrielpf/cordova-angular.git"
   },
   "scripts": {
-    "build": "tsc",
-    "test": "tsc"
+    "transpile": "ngc",
+    "package": "rollup -c",
+    "minify": "uglifyjs dist/bundles/cordova.angular.umd.js --screw-ie8 --compress --mangle --comments --output dist/bundles/cordova.angular.umd.min.js",
+    "build": "npm run transpile && npm run package && npm run minify"
   },
-  "version": "0.0.2",
+  "version": "0.0.4",
   "main": "plugin/cordova.js",
   "author": "gabrielpf"
 }
